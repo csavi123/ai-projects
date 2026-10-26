@@ -1,9 +1,9 @@
 # VivaPrep
 
-An interview coach that grades you against your own notes. It answers questions using only your notes, with citations. It asks you interview questions written from a single lesson, and refuses when a topic isn't in your notes.
+An interview coach built on RAG (retrieval-augmented generation) that grades you against your own notes. It answers questions using only your notes, with citations. It asks you interview questions written from a single lesson, and refuses when a topic isn't in your notes.
 
-- **Ask mode (v1):** retrieval-augmented answers. Code refuses before calling Claude if nothing in the notes is close enough, and shows an answer only if every citation points to a chunk that was actually sent.
-- **Question mode (v2):** interview questions (definition, why, scenario) generated from one lesson. Each is tagged with the key points it tests, and those tags are checked in code.
+- **Ask mode (v1, RAG):** embeds your question, retrieves the closest note chunks, and has Claude answer only from them. Code refuses before calling Claude if nothing is close enough, and shows an answer only if every citation points to a chunk that was actually sent.
+- **Question mode (v2, no retrieval):** the lesson is already known, so the whole lesson is sent instead of searched. Claude writes interview questions (definition, why, scenario), each tagged with the key points it tests, and those tags are checked in code.
 - **Coming next:** v3 Feedback (LLM as judge, scored in code), v3.5 judge eval, v4 weak-spot tracking.
 
 How it works: [ARCHITECTURE.md](ARCHITECTURE.md). Full design and roadmap: [PLAN.md](PLAN.md).
